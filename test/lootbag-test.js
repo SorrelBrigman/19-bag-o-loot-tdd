@@ -1,20 +1,20 @@
 'use strict'
 
-const {assert: {isDefined} } = require('chai');
+const {assert: {isDefined, isArray} } = require('chai');
 
-const {db}  = require('../bagoloot/lootbag.js')
+const {db, args}  = require('../bagoloot/lootbag.js')
 
 // console.log(db);
 
 describe('lootbag', ()=>{
   describe('db', () =>{
-    it('should exist as a database', ()=>{
+    it('should exist', ()=>{
       isDefined(db, 'should be defined');
     });
+  });
+  describe('args', ()=>{
+    it('should return an array', ()=>{
+      isArray(args);
+    })
   })
-  // describe('addToList', () =>{
-  //   it('should add to the database', ()=>{
-
-  //   })
-  // })
 })
