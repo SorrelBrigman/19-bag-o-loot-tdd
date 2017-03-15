@@ -2,11 +2,10 @@
 
 const {db} = require('./lootbag.js');
 
-const removeName = (a, b)=>{
+const removeName = (a)=>{
   return new Promise((resolve, reject)=>{
     let name = a;
-    let toy = b;
-    db.run(`DELETE FROM children WHERE name="${name}" and toy="${toy}"`, (err, thing)=>{
+    db.run(`DELETE FROM children WHERE name="${name}"`, (err, thing)=>{
       resolve(thing)
     })
   })

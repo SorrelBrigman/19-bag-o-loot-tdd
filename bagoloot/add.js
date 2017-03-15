@@ -33,17 +33,32 @@ const queryLastId = () => {
 
 const queryName = (queryValue) => {
   return new Promise ((resolve, reject)=>{
-    db.get(`SELECT name FROM children WHERE ${queryValue}`, (err, children) =>{
-      let data = children;
-
+    db.all(`SELECT name FROM children WHERE ${queryValue} GROUP BY name`, (err, children) =>{
+      let data = children[0].name;
+      console.log("return from name query", data)
       if(err) {
         console.log("queryName error", err)
       }
-      console.log("trying to query Value")
+      // console.log("trying to query Value")
+      resolve(data);
+    })
+  })
+}
+
+const queryDelivery = (queryValue) => {
+  return new Promise ((resolve, reject)=>{
+    db.all(`SELECT delievered FROM children WHERE ${queryValue} GROUP BY delievered`, (err, status) =>{
+      let data = status[0].delievered;
+      console.log("return from query deliver", data)
+      if(err) {
+        console.log("queryDelivery error", err)
+      }
+      console.log("trying to query delivery")
+
       resolve(data);
     })
   })
 }
 
 
-module.exports = { addName, queryLastId, queryName }
+module.exports = { addName, queryLastId, queryName, queryDelivery }

@@ -21,7 +21,7 @@ describe('add', ()=>{
       })
       .then((response)=>{
         console.log(response)
-        equal(response.name, "Sally");
+        equal(response, "Sally");
         })
     });
     it('should change the number of entries in the database', ()=>{
