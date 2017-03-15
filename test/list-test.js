@@ -10,7 +10,11 @@ describe('list', ()=>{
       isFunction(listAll);
     });
     it('should list all items in database database', ()=>{
-
+      return listAll()
+      .then((result)=>{
+        let childrenNames = result;
+        isArray(childrenNames);
+      })
     })
   });
   describe('listToys', ()=>{

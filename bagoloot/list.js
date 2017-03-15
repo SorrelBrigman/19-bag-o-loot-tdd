@@ -3,7 +3,12 @@
 const {db} = require('./lootbag.js');
 
 const listAll = ()=>{
-
+  return new Promise((resolve, reject)=>{
+    db.all(`SELECT name FROM children GROUP BY name`, (err, things)=>{
+      let names = things;
+      resolve(names);
+    })
+  })
 }
 
 const listToys = (value)=>{
