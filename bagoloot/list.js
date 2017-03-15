@@ -1,6 +1,9 @@
 'use strict'
 
-const {db} = require('./lootbag.js');
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./lootbag.sqlite3');
+
+// const {db} = require('./lootbag.js');
 
 const listAll = ()=>{
   return new Promise((resolve, reject)=>{

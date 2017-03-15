@@ -27,7 +27,7 @@ describe('remove', ()=>{
       return queryLastId()
       .then((answer)=>{
         beforeRemove = answer;
-        return removeName("Bobby")
+        return removeName("Bobby", "guitar")
       })
       .then(()=>{
         return queryLastId()

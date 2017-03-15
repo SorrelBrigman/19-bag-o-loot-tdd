@@ -1,6 +1,9 @@
 'use strict'
 
-const { db } = require('./lootbag.js')
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./lootbag.sqlite3');
+
+// const { db } = require('./lootbag');
 
 
 const addName = (a, b)=> {
@@ -12,7 +15,9 @@ const addName = (a, b)=> {
     db.run(`INSERT INTO children VALUES(null, "${name}", "${toy}", 0)`, (err, thing) =>{
       if(err) {
         console.log("addName err", err)
+        return reject
       }
+
       resolve(thing);
     })
   })

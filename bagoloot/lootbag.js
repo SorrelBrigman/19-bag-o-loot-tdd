@@ -2,9 +2,9 @@
 
 
 const sqlite3 = require('sqlite3').verbose();
+const {whichFunction} = require('./pars-args.js');
 
 const db = new sqlite3.Database('./lootbag.sqlite3');
-
 
 const createTable =() =>{
   db
@@ -13,5 +13,7 @@ const createTable =() =>{
 }
 
 let [,,...args] = process.argv;
+
+whichFunction(args);
 
 module.exports = { db, args, createTable }
